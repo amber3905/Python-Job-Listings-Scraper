@@ -1,7 +1,7 @@
 import requests
+from bs4 import BeautifulSoup
 
-# Make a request to the web page
 x = requests.get("https://realpython.github.io/fake-jobs/")
+y = BeautifulSoup(x.content, "html.parser")
 
-# Print the response text
-print(x.text)
+print(y.prettify())
