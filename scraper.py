@@ -1,8 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
+import re
 
 x = requests.get("https://realpython.github.io/fake-jobs/", timeout=1)
 y = BeautifulSoup(x.content, "html.parser")
 z = y.find_all(True, class_="card-content")
-
-print(z)
+for job in z:
+    title = job.find("h2").get_text(strip=True)
+    company = job.find("h3").get_text(strip=True)
+    location = job.find("p",class_="location").get_text(strip=True)
+    url = job.find("a", href=re.compile("jobs"))
+    print("Title:", title + ", Company:", company + ", Location:", location + ", Url:", url.get("href"))
