@@ -24,10 +24,15 @@ with open("jobs.csv", "w") as f:
     fWriter = csv.writer(f)
     fields = ["Title", "Company", "Location", "URL"]
     fWriter.writerow(fields)
+
     for job in z:
-        title = job.find("h2").get_text(strip=True)
-        company = job.find("h3").get_text(strip=True)
-        location = job.find("p",class_="location").get_text(strip=True)
+        title = job.find("h2")
+        company = job.find("h3")
+        location = job.find("p",class_="location")
         url = job.find("a", href=re.compile("jobs"))
-        row = [title,company,location,url.get("href")]
-        fWriter.writerow(row)
+        if (title != None) and (company != None) and (location != None) and (url != None):
+            title = title.get_text(strip=True)
+            company = company.get_text(strip=True)
+            location = location.get_text(strip=True)
+            row = [title,company,location,url.get("href")]
+            fWriter.writerow(row)
