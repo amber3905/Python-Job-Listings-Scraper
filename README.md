@@ -33,10 +33,10 @@ The data is then stored in a CSV file for easy analysis.
 ```bash
 Python-Job-Listings-Scraper/
 │── scraper.py
-│── jobs.csv
 │── README.md
 │── .gitignore
 │── LICENSE
+jobs.csv
 ```
 ---
 ## 🚀 How to Run
@@ -58,7 +58,7 @@ Python-Job-Listings-Scraper/
    ```
 ---
 ## 📄 Example Output
-|Job Title|Company Name|Location|URL|
+|Title|Company|Location|URL|
 |---------|------------|--------|---|
 |Python Developer|ABC Corp|New York, NY|https://example.com/job1|
 |Data Analyst|XYZ Ltd|Remote|https://example.com/job2|
@@ -87,6 +87,10 @@ No real job listings are collected.
 ---
 ## 👨‍💻 Author
 Amber-Jo Betts
+
+---
+## 🔗 Project URL
+https://roadmap.sh/projects/job-listings-scraper
 
 ---
 ## ⭐ If you found this project helpful, give it a star!
