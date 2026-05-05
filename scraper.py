@@ -3,9 +3,23 @@ from bs4 import BeautifulSoup
 import re
 import csv
 
-x = requests.get("https://realpython.github.io/fake-jobs/", timeout=1)
+try:
+    x = requests.get("https://realpython.github.io/fake-jobs/", timeout=1)
+    x.raise_for_status()
+except requests.exceptions.HTTPError:
+    print("Error: Status code " + str(x.status_code))
+    quit()
+except requests.exceptions.RequestException:
+    print("Error: Couldn't get URL")
+    quit()
+
 y = BeautifulSoup(x.content, "html.parser")
+
 z = y.find_all(True, class_="card-content")
+if len(z) == 0:
+    print("Error: No job cards found")
+    quit()
+
 with open("jobs.csv", "w") as f:
     fWriter = csv.writer(f)
     fields = ["Title", "Company", "Location", "URL"]
